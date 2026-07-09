@@ -1,0 +1,12 @@
+[
+  {"paper": "data/ICLR2026/25369_Common_Corpus_The_Larges.pdf", "label": "accept"},
+  {"paper": "data/ICLR2026/25302_Q_RAG_Long_Context_Multi.pdf", "label": "accept"},
+  {"paper": "data/ICLR2026/24802_From_movement_to_cogniti.pdf", "label": "accept"},
+  {"paper": "data/ICLR2026/24624_FIRE_Frobenius_Isometry_.pdf", "label": "accept"},
+  {"paper": "data/ICLR2026/24538_Exchangeability_of_GNN_R.pdf", "label": "accept"},
+  {"paper": "data/ICLR2026/25649_Improving_Developer_Emot.pdf", "label": "reject"},
+  {"paper": "data/ICLR2026/25639_Revisiting_Multilingual_.pdf", "label": "reject"},
+  {"paper": "data/ICLR2026/25633_One_Shot_Style_Personali.pdf", "label": "reject"},
+  {"paper": "data/ICLR2026/25628_Compositional_HyperModul.pdf", "label": "reject"},
+  {"paper": "data/ICLR2026/25627_All_in_One_Boosting_Basi.pdf", "label": "reject"}
+]

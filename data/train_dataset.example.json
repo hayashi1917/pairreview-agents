@@ -1,0 +1,5 @@
+[
+  {"paper": "papers/example1.pdf", "label": "accept"},
+  {"paper": "data/sample_mineru_output.json", "label": "reject"},
+  {"paper": "output/graph.json", "label": "accept"}
+]

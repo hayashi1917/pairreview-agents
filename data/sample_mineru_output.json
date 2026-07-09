@@ -1,0 +1,11 @@
+{
+  "title": "A New Method for Robust Learning",
+  "main_text": "This paper proposes a novel regularization technique for improving robustness of deep neural networks under distribution shift. We evaluate our method on three benchmark datasets and show consistent improvements over baselines.",
+  "references": "[1] Example Author. Example Paper Title. 2024.",
+  "image_descriptions": [
+    "Figure 1: Overview of the proposed architecture."
+  ],
+  "tables": [
+    "| Method | Accuracy |\n|---|---|\n| Baseline | 80.1 |\n| Ours | 84.3 |"
+  ]
+}
