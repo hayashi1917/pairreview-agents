@@ -1,0 +1,53 @@
+{
+  "doc_id": "lcNa5mQ-CSb",
+  "source_pdf_id": "ynuneF8WA0",
+  "target_pdf_id": "mvQwFp1oTz",
+  "dataset": "ARIES",
+  "dataset_paper": "https://aclanthology.org/2024.acl-long.377/",
+  "dataset_repository": "https://github.com/allenai/aries",
+  "dataset_record_file": "https://ai2-s2-research-public.s3.amazonaws.com/aries/paper_edits.jsonl",
+  "record_file_sha256": "2ac050dc84ec984db5e9ed166f5411d54e213bfc16a4f596766041f1910e5d3c",
+  "selection": "First record, chosen before generation; original pre-review PDF available",
+  "original_pdf": "https://openreview.net/references/pdf?id=ynuneF8WA0",
+  "original_pdf_sha256": "b65da8a1b69e7a77b0853043e2c3d8dbc05f4fcff69cb6b5edee8660dce468a6",
+  "original_pdf_creation_date": "2020-10-02T13:41:19Z",
+  "original_pdf_pages": 14,
+  "first_official_review_displayed_date": "2020-10-27",
+  "source_role": "Latest PDF before the first review, per ARIES Section 4.1",
+  "target_role": "Revised version, not used as input",
+  "official_forum": "https://openreview.net/forum?id=lcNa5mQ-CSb",
+  "official_reviews": [
+    {
+      "reviewer": "AnonReviewer5",
+      "note_id": "7jGBt5Gh-4f",
+      "rating": 7,
+      "confidence": 4
+    },
+    {
+      "reviewer": "AnonReviewer2",
+      "note_id": "TO6pqnJEM6c",
+      "rating": 3,
+      "confidence": 4
+    },
+    {
+      "reviewer": "AnonReviewer3",
+      "note_id": "3njY0I1L9pk",
+      "rating": 5,
+      "confidence": 4
+    },
+    {
+      "reviewer": "AnonReviewer4",
+      "note_id": "FcdQcUHhHkZ",
+      "rating": 6,
+      "confidence": 4
+    }
+  ],
+  "author_revision_comment": "rtHp13sc2JU",
+  "theorem_counterexample_followup": "ibBO2ftZHbA",
+  "reviewer_followup_after_answer": "biExnJ72bO",
+  "final_decision": {
+    "note_id": "BfiTNTAh2MZ",
+    "decision": "Reject"
+  },
+  "retrieval": "Read official forum rendered in browser; downloaded pinned source PDF from official references URL; official review prose not redistributed"
+}

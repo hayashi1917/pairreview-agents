@@ -1,0 +1,39 @@
+{
+  "title": "Score-based Causal Discovery from Heterogeneous Data",
+  "forum": "https://openreview.net/forum?id=lcNa5mQ-CSb",
+  "source_pdf_url": "https://openreview.net/references/pdf?id=ynuneF8WA0",
+  "source_pdf_sha256": "b65da8a1b69e7a77b0853043e2c3d8dbc05f4fcff69cb6b5edee8660dce468a6",
+  "aries_doc_id": "lcNa5mQ-CSb",
+  "aries_source_pdf_id": "ynuneF8WA0",
+  "aries_target_pdf_id_not_used": "mvQwFp1oTz",
+  "text_characters": 68868,
+  "prepared_input_sha256": "67ef00358dc80b85ea2dca24b331d8b18966695a15556a3d269275e576888db3",
+  "page_images": 14,
+  "image_max_dimension": 1200,
+  "scope": "All 14 pages, including title, figures, tables, references and appendix",
+  "models": {
+    "debate": "gpt-4.1",
+    "relation_extraction": "gpt-4.1-mini",
+    "embedding": "text-embedding-3-small"
+  },
+  "trained_weights_present": false,
+  "official_reviews_or_author_replies_given_to_generation": false,
+  "selection": "First record in ARIES paper_edits.jsonl; selected for pinned pre-review PDF availability, before reading generated outputs",
+  "started_at": "2026-10-16T00:12:37.456375+09:00",
+  "completed_at": "2026-10-16T00:16:15.591803+09:00",
+  "implementation_base_commit": "c8c6ba361678bfec0cd87bf96303c323ad8d0a7d",
+  "input_adapter": "run_submission_review.py adds full-page images to existing debate ingestion; reviewer prompts and subsequent pipeline unchanged",
+  "input_adapter_sha256": "d5da0a28866dc0eee9b0a53437058acb9eadb8d276adfe61c04dc70428b74603",
+  "debate_turns": 9,
+  "graph_nodes": 14,
+  "graph_edges": 23,
+  "http_successes": 20,
+  "duration_seconds": 218,
+  "validation": [
+    "Validated 9 unique turns and 3 reviewer-author-reevaluation chains",
+    "Validated graph schema and all edge endpoints",
+    "Validated prediction schema, finite probabilities, total probability and untrained flag",
+    "Verified successful completion of all six stages",
+    "Original PDF hash matches ARIES source PDF; revised target PDF not used"
+  ]
+}

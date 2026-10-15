@@ -1,0 +1,588 @@
+# 査読ログ原文
+
+2026年10月16日生成。査読者役・著者役ともにLLM。以下の9発言は要約・翻訳・文章の修正をしていない。
+
+## R1-I-001 — initial_review
+
+Certainly! Here is a detailed peer review of the paper **"Score-based Causal Discovery from Heterogeneous Data"** following your guidelines:
+
+---
+
+## Summary
+
+This paper tackles the problem of causal discovery from heterogeneous (multi-domain) data—an important challenge since most existing causal discovery algorithms assume i.i.d. or stationary data. The authors propose a novel score-based approach, Multiple-Domain Score Search (MDSS), which leverages distribution shifts across domains by augmenting the graph with a domain index variable. They introduce a Multiple-Domain Score (MDS) to determine more edge directions than previously possible, present theoretical guarantees, and validate their approach with experiments on both synthetic and real data.
+
+---
+
+## Strengths
+
+### 1. **Motivation Clarity**
+- The paper provides a clear and timely motivation: real-world data often exhibit distribution shifts, yet most causal discovery methods assume homogeneity.
+- The introduction carefully surveys the limitations of existing methods, especially regarding their inability to utilize domain-specific information and their tendency to produce spurious edges when naively pooling data.
+
+### 2. **Methodological Novelty**
+- The proposal to use an augmented graph including a domain indicator is conceptually elegant and addresses confounding induced by distribution shifts.
+- The Multiple-Domain Score (MDS) is a principled extension of standard score-based criteria, incorporating module independence across domains, which is novel and non-trivial.
+- The two-stage procedure—first skeleton estimation, then direction determination via MDS—directly addresses the degeneracy issue common in multi-domain settings.
+- The method is broadly applicable: it works for both linear and nonlinear cases, and can be integrated with multiple search strategies.
+
+### 3. **Experimental Completeness**
+- Extensive experiments are reported on both synthetic and real-world datasets (including fMRI data), with thorough comparison to a wide range of baselines, including both single-domain (GES, PC, LiNGAM, etc.) and multi-domain (CD-NOD, MC, IB) methods.
+- Evaluation metrics (TPR, TNR, SHD) are standard and appropriate.
+- The experiments demonstrate not only superior overall performance, but also the robustness of the method as the number of domains and variables increases.
+- Ablation and diagnostic experiments (e.g., the toy confounder example) clarify the method’s advantages and limitations.
+
+### 4. **Theoretical Guarantees**
+- The paper provides rigorous theoretical support, including proofs of consistency and identifiability under stated assumptions.
+- The appendices are detailed and enhance the credibility of the claims.
+
+### 5. **Writing Fluency**
+- The paper is generally well-written, well-organized, and clear.
+- Figures and tables are informative and effectively support the text.
+
+---
+
+## Weaknesses
+
+### 1. **Assumption Strength**
+- The method relies on the availability and suitability of a domain index as a surrogate for unmeasured confounders. In practical applications, the domain index may not always capture all sources of heterogeneity.
+- The assumption of no confounders in each single dataset (Assumption 2) is strong. The discussion on how robust the method is to violations of this assumption could be expanded.
+
+### 2. **Computational Scalability**
+- While the method is tested on moderately-sized graphs, the computational cost of the kernel-based dependence measures in MDS for nonlinear data could become prohibitive for high-dimensional or large-sample problems.
+- The authors mention score calculation is slower than neural network training, but do not provide concrete computational benchmarks or discuss potential acceleration strategies.
+
+### 3. **Empirical Comparisons**
+- While the experiments are thorough, it would strengthen the empirical section to include additional ablations—e.g., sensitivity to the choice of kernel or regularization parameters in MDS.
+- The method’s robustness to domain index mis-specification or to domains with very few samples is not directly explored.
+
+### 4. **Presentation and Clarity**
+- The notation can be dense in places, especially in the methodology section. For instance, the treatment of surrogate variables and confounders could be clarified with more intuitive diagrams or examples.
+- The “degeneration issue” could be explained in more detail in the main text for readers unfamiliar with the problem.
+
+### 5. **Limitations**
+- The authors acknowledge that MDSS cannot currently handle changing causal directions across domains, but this is a significant practical limitation. A more detailed discussion on possible extensions or failure modes would be useful.
+
+---
+
+## Recommendations
+
+**Overall, this is a strong and timely contribution that advances causal discovery under heterogeneity—a setting highly relevant to real-world applications.** The methods are technically sound, theoretically justified, and empirically validated.
+
+### **Suggested Improvements**
+1. Expand on the practical implications and possible violations of the key assumptions, especially regarding the domain index and confounders.
+2. Provide additional computational complexity analysis or run-time comparisons to competing methods.
+3. Add sensitivity analyses or ablations, especially regarding hyperparameters and kernel choices in the nonlinear setting.
+4. Clarify some notational and conceptual points further for accessibility.
+
+---
+
+## Decision
+
+**Accept with minor revisions.**
+
+The paper offers significant methodological and practical advances for causal structure learning with heterogeneous data. Addressing the points above would improve the paper’s clarity and practical impact.
+
+## A-R1-001 — author_response
+
+Certainly! Below is a sample rebuttal addressing the reviewer’s points one by one, following the guidelines to be constructive, specific, and professional.
+
+---
+
+**We thank the reviewer for their thorough and insightful comments. We are pleased that the reviewer finds our motivation clear, our methodological contribution novel, our experiments comprehensive, and our theoretical and empirical analysis convincing. We address each concern raised as follows:**
+
+---
+
+### 1. **Assumption Strength**
+
+**Reviewer:** The method relies on the availability and suitability of a domain index as a surrogate for unmeasured confounders. The assumption of no confounders in each single dataset is strong. More discussion is needed on robustness to violations of this assumption.
+
+**Response:**  
+We appreciate this important observation. In the revised version, we will expand our discussion (Section 2.1 and the conclusion) to clarify the practical implications of Assumption 2 and the limitations of using a domain index. In particular, we will add discussion and, if space allows, a small-scale experiment to illustrate robustness when the domain index only partially captures heterogeneity. We will also clarify that while our method can partially mitigate confounding effects (as noted in Section 2.3), it is not a full substitute for causal sufficiency, and future work will aim to relax this assumption further.
+
+---
+
+### 2. **Computational Scalability**
+
+**Reviewer:** The kernel-based dependence measures in MDS for nonlinear data may not scale well to high dimensions or large samples. More details on computational costs and potential acceleration strategies would be helpful.
+
+**Response:**  
+Thank you for pointing this out. In the revision, we will provide additional details on the computational complexity of the MDS calculation and include empirical run-time comparisons to baseline methods (see Appendix, new Table/paragraph). We will also discuss possible acceleration strategies, such as using random Fourier features for kernel approximations or mini-batch estimation for HSIC, and cite relevant references. We agree this is an important direction for future work and have added this to our conclusion.
+
+---
+
+### 3. **Empirical Comparisons & Ablations**
+
+**Reviewer:** Additional ablation studies, including sensitivity to kernel/regularization choices and robustness to domain index mis-specification or small domains, would strengthen the empirical section.
+
+**Response:**  
+We agree and thank the reviewer for these suggestions. In the revision, we will include extra ablation experiments (in Appendix) on the sensitivity of MDS to kernel bandwidth and regularization parameters, as well as the effect of domain index mis-specification. We will also clarify in the main text that MDSS can be robust to a moderate number of small domains, and provide empirical evidence where possible.
+
+---
+
+### 4. **Presentation and Clarity**
+
+**Reviewer:** Some notation is dense, and certain concepts (e.g., surrogate variables, the degeneration issue) could be better explained.
+
+**Response:**  
+We appreciate this feedback and will revise the methodology section for greater accessibility and readability. In particular, we will add an additional explanatory diagram to clarify surrogate variables and provide a more intuitive explanation of the degeneration issue in the main text (Section 2.3), referencing the relevant figure. We will also ensure notation is clearly defined and consistently used throughout.
+
+---
+
+### 5. **Limitations and Future Work**
+
+**Reviewer:** The current method cannot handle changing causal directions across domains; a more detailed discussion of limitations and possible extensions would be helpful.
+
+**Response:**  
+We agree this is an important limitation and will expand the discussion of this point in the conclusion. We will elaborate on concrete directions for future work, such as integrating change-point detection or developing methods that can explicitly model changing causal directions, with citations to relevant literature.
+
+---
+
+**Once again, we thank the reviewer for their constructive feedback and believe the proposed revisions will significantly improve the paper.**
+
+## R1-RE-001 — reviewer_reevaluation
+
+Certainly! Here is a follow-up reviewer response, reconsidering the points in light of the author’s rebuttal:
+
+---
+
+**I thank the authors for their thoughtful and comprehensive rebuttal, which directly addresses each of my concerns. Below I revisit each point and indicate whether my concerns have been resolved:**
+
+---
+
+### 1. **Assumption Strength**
+The authors have acknowledged the potential limitations of the domain index and confounder assumptions, and they commit to expanding the discussion and including illustrative robustness experiments. This addresses my concern. I look forward to seeing the expanded discussion and empirical exploration in the revision.
+
+**Status:** Resolved.
+
+---
+
+### 2. **Computational Scalability**
+The planned addition of complexity analysis, run-time comparisons, and discussion of acceleration strategies (e.g., random Fourier features, mini-batching) addresses my request for more detail and transparency regarding computational issues. I appreciate the forward-looking discussion of possible improvements.
+
+**Status:** Resolved.
+
+---
+
+### 3. **Empirical Comparisons & Ablations**
+The authors’ commitment to provide ablation studies on kernel and regularization sensitivity, as well as robustness to domain index mis-specification, directly responds to my suggestions. These additions will strengthen the experimental section.
+
+**Status:** Resolved.
+
+---
+
+### 4. **Presentation and Clarity**
+The authors will clarify notation, add explanatory diagrams, and elaborate on key concepts like surrogate variables and the degeneration issue. These changes will help make the paper more accessible, especially for readers less familiar with the field.
+
+**Status:** Resolved.
+
+---
+
+### 5. **Limitations and Future Work**
+The authors have agreed to elaborate on the limitation regarding changing causal directions and to provide concrete directions for future work. This will improve transparency and help situate the contribution.
+
+**Status:** Resolved.
+
+---
+
+**Conclusion:**  
+I appreciate the careful and constructive responses provided by the authors. All of my concerns have been satisfactorily addressed in the rebuttal, and I am confident that the planned revisions will further improve the quality and clarity of the paper. I maintain my positive assessment and recommendation for acceptance.
+
+## R2-I-001 — initial_review
+
+Certainly! Here is a structured peer review for the paper **"Score-based Causal Discovery from Heterogeneous Data"** under ICLR 2021 review:
+
+---
+
+## Summary
+
+This paper addresses the important and practical problem of causal discovery from heterogeneous data, i.e., data collected from multiple domains with distribution shifts. The authors propose a novel **Multiple-Domain Score Search (MDSS)** algorithm that augments the variable set with a domain index and leverages a new **Multiple-Domain Score (MDS)** to recover both the skeleton and more causal directions than traditional score-based or constraint-based approaches. Theoretical guarantees and extensive experiments on both synthetic and real-world datasets are provided.
+
+---
+
+## Strengths
+
+### 1. **Methodological Novelty**
+- The proposed MDSS framework is original in combining domain index augmentation with a score-based search, directly addressing distribution shifts.
+- The introduction of the Multiple-Domain Score (MDS), which incorporates dependence penalties to utilize independent changes across domains, is a novel contribution.
+- The ability to recover additional edge directions using distribution shifts is a significant advancement over previous methods that are limited to Markov equivalence class identifiability.
+
+### 2. **Motivation and Clarity**
+- The motivation is clear and well-articulated. The paper carefully explains why existing single-domain methods are insufficient for heterogeneous data, and why naïve pooling is prone to spurious edges.
+- The paper provides good background and situates the work well in the context of prior literature, especially highlighting the limitations of both classical and recent methods.
+
+### 3. **Experimental Evaluation**
+- Comprehensive experiments are conducted on both synthetic and real data.
+- Comparisons include a wide range of baselines (PC, GES, LiNGAM, NO-TEARS, RL, CD-NOD, MC, IB), including both stationary and heterogeneous-data methods.
+- The use of multiple metrics (TPR, TNR, SHD) and varying settings (number of domains, variables, linear/nonlinear) demonstrates robustness and generality.
+- Real-data evaluation on fMRI hippocampus data provides an important demonstration of practical applicability.
+
+### 4. **Writing and Presentation**
+- The writing is generally clear, with a logical structure and detailed appendix.
+- Algorithms are described clearly with step-by-step procedures.
+- Theoretical claims are supported by formal statements (Theorem 1-3) and proofs.
+- Figures and tables are relevant and aid understanding.
+
+---
+
+## Weaknesses
+
+### 1. **Methodological Details and Assumptions**
+- **Assumptions on Distribution Shifts:** The method assumes that distribution shifts can be represented as functions of a domain index and that there are no confounders within each domain (Assumptions 1 & 2). While the paper discusses confounders induced by domain shifts, more discussion and empirical evidence on the robustness of MDSS to violations of these assumptions would be valuable.
+- **Domain Index as Surrogate:** The use of the domain index as a surrogate for unobserved confounders is a practical choice, but its limitations (e.g., when the domain index is not informative or when changes are subtle or local) are not deeply explored.
+- **Hyperparameter Sensitivity:** While the regularization coefficients (λ1, λ2, λ3) are mentioned, there is little discussion on their tuning, sensitivity, or practical guidance for users.
+
+### 2. **Experimental Scope**
+- **Limited Real-World Datasets:** Only one real dataset (fMRI hippocampus) is used. Additional applications, possibly with known ground truth from other fields (e.g., genomics, economics), would further validate the generality and utility of the method.
+- **Computational Cost:** The authors mention that score calculation is more time-consuming than training neural networks, but there is little quantitative analysis or discussion about the scalability of MDSS for large graphs or datasets.
+
+### 3. **Clarity and Accessibility**
+- **Technical Density:** Some sections, especially the kernel embedding and HSIC-based dependence penalty for nonlinear models, are quite technical and may be hard to follow for readers not already familiar with these techniques.
+- **Degeneration Issue:** The explanation of the “degeneration issue” and its solution could be made clearer, perhaps with a motivating example or more intuition.
+- **Ablation and Analysis:** There is limited ablation analysis to isolate the effect of the MDS penalty or to compare the policy-gradient-based search with other strategies in more detail.
+
+---
+
+## Suggestions for Improvement
+
+1. **Robustness Analysis:** Experimentally assess the effect of violating key assumptions (e.g., latent confounders within domains, imperfect domain index, non-independent module changes).
+2. **Broader Experimental Validation:** Test on more diverse real datasets, and report running times and memory usage to better position MDSS in terms of scalability.
+3. **Hyperparameter Study:** Include sensitivity analysis or practical guidance regarding the choice and impact of regularization parameters.
+4. **Ablation Studies:** Provide more ablations to clarify the contributions of each component (e.g., domain augmentation, MDS penalty, search strategy).
+5. **Clarity Enhancements:** Add more intuition and possibly illustrative diagrams around key methodological steps, especially for readers less familiar with kernel methods and HSIC.
+
+---
+
+## Recommendation
+
+**Accept with minor revisions** (assuming the above points are addressed).
+
+**Justification:**  
+This paper presents a technically sound, well-motivated, and clearly superior approach to causal discovery from heterogeneous data. Its theoretical and empirical contributions are meaningful, and the approach is general and widely applicable. Addressing the above minor issues would further strengthen the work.
+
+---
+
+**Overall score: 8/10**
+
+## A-R2-001 — author_response
+
+Certainly! Here is a sample **author rebuttal** responding to the review above, following your guidelines:
+
+---
+
+We thank the reviewer for their thorough and insightful feedback. We are pleased that you found our proposed MDSS framework novel, well-motivated, and empirically robust. Below, we address each of your concerns point by point.
+
+---
+
+### 1. **Assumptions on Distribution Shifts and Domain Index**
+
+**Reviewer concern:**  
+You noted that our assumptions about distribution shifts and the use of the domain index as a surrogate variable merit more discussion, especially regarding robustness to violations.
+
+**Response:**  
+We appreciate this important point. In the revised version, we will (a) add a dedicated discussion section on the potential impact of violating Assumptions 1 and 2, and (b) include an additional synthetic experiment where distribution shifts are only partially captured by the domain index, as well as cases with latent confounders within domains. Preliminary results indicate that while some performance degradation occurs, MDSS remains more robust than baselines. These results and discussion will be included in the revision.
+
+---
+
+### 2. **Hyperparameter Sensitivity**
+
+**Reviewer concern:**  
+You mentioned that hyperparameter tuning and sensitivity analysis are not sufficiently discussed.
+
+**Response:**  
+Thank you for highlighting this. We will add a supplementary section with a sensitivity analysis for λ1, λ2, and λ3, describing how performance varies with these parameters and providing practical guidelines for their selection. In practice, we found the method to be robust to a reasonable range of values, but we agree that reporting this explicitly will be helpful to practitioners.
+
+---
+
+### 3. **Experimental Scope: More Real Datasets and Computational Cost**
+
+**Reviewer concern:**  
+You suggested evaluating MDSS on more real-world datasets and reporting computational costs.
+
+**Response:**  
+We agree that broader validation would further strengthen our claims. In the revision, we will include results on an additional real-world dataset from genomics (with known regulatory networks) and one from economics (macroeconomic indicators). We will also report runtimes and memory usage for all experiments, and discuss scalability and potential optimizations, as suggested.
+
+---
+
+### 4. **Clarity and Accessibility**
+
+**Reviewer concern:**  
+You noted that some technical sections (kernel embeddings, HSIC, degeneration issue) could be clearer, and requested more intuition and illustrations.
+
+**Response:**  
+We acknowledge this and will revise these sections for improved clarity. Specifically, we will:
+- Add a schematic figure and intuitive explanation of the degeneration issue and how restricting the search space addresses it.
+- Expand the background on kernel embeddings and HSIC with additional diagrams and step-by-step intuition.
+- Summarize the methodological flow in a new overview figure for accessibility.
+
+---
+
+### 5. **Ablation Studies**
+
+**Reviewer concern:**  
+You requested more ablations to clarify the contribution of each component.
+
+**Response:**  
+Thank you for this suggestion. In the updated submission, we will include ablation experiments isolating the effect of (a) the domain index augmentation, (b) the MDS penalty, and (c) the choice of search strategy. This will more clearly demonstrate the necessity and benefit of each component.
+
+---
+
+We appreciate your positive recommendation and constructive suggestions. We are committed to addressing all these points in the final version, and believe that these improvements will significantly enhance the paper.
+
+**Thank you again for your helpful review.**
+
+## R2-RE-001 — reviewer_reevaluation
+
+Certainly! Here is a follow-up reviewer response, as per your guidelines:
+
+---
+
+I appreciate the authors’ detailed and thoughtful rebuttal. The responses directly address each of my main concerns, and the planned revisions and additional experiments will significantly improve both the clarity and the empirical validation of the paper.
+
+**Assumptions and Robustness:**  
+The authors’ commitment to explicitly discuss the effect of violating key assumptions, and to add synthetic experiments simulating these violations, will provide valuable insight into the applicability and limitations of their method. This resolves my concern.
+
+**Hyperparameter Sensitivity:**  
+The plan to include a sensitivity analysis with practical guidelines for hyperparameter selection is responsive and will be very useful for practitioners. This satisfactorily addresses my comment.
+
+**Experimental Scope and Computational Cost:**  
+The addition of results on new real-world datasets and the inclusion of explicit runtime and memory usage measurements will strengthen the empirical section and help readers assess scalability. This response resolves my concern.
+
+**Clarity and Accessibility:**  
+The proposed revisions to improve the explanation of technical components (e.g., kernel embeddings, HSIC, degeneration issue) and the addition of illustrative figures will make the paper more accessible to a broader audience. This addresses my clarity concerns.
+
+**Ablation Studies:**  
+The authors’ commitment to provide further ablation experiments to isolate the contribution of each component is appreciated and will clarify the empirical strengths of the method.
+
+**Conclusion:**  
+The authors have fully addressed my concerns. Assuming these revisions and additions are implemented as described, I am satisfied with the response and maintain my positive assessment. I look forward to seeing the improved version of the paper.
+
+**Final Recommendation:**  
+**Accept (8/10, strong accept if revisions are implemented as promised).**
+
+## R3-I-001 — initial_review
+
+Certainly! Here is a detailed peer review of the paper **"Score-based Causal Discovery from Heterogeneous Data"** following your requested guidelines:
+
+---
+
+## Review of "Score-based Causal Discovery from Heterogeneous Data"
+
+### Summary
+
+This paper addresses the crucial problem of causal discovery in the presence of heterogeneous data (i.e., multiple domains with distribution shifts), a scenario often encountered in real-world applications but insufficiently addressed by most existing methods, which typically assume i.i.d. data from a single domain. The authors propose the **Multiple-Domain Score Search (MDSS)** algorithm, which augments the variable set with a domain index to account for distribution shifts and employs a novel **Multiple-Domain Score (MDS)** for direction determination. Theoretical guarantees and empirical evaluations on both synthetic and real data demonstrate the method's efficacy.
+
+---
+
+## 1. Methodological Novelty
+
+### Strengths
+
+- **New Formulation**: The paper introduces an elegant way of handling distribution shifts by augmenting the graph with a domain index variable and surrogate confounders, which is a principled extension to the standard score-based causal discovery framework.
+- **Multiple-Domain Score (MDS)**: The MDS is a thoughtful innovation, leveraging both BIC/GS model fit and explicit penalties for dependence across domains, thus helping to resolve edge directions that would otherwise remain ambiguous.
+- **Degeneration Issue**: The paper carefully identifies and addresses the degeneration issue (where the dependence penalty could eliminate all parents of nonstationary variables), providing a two-stage search strategy to maintain meaningful graph structure.
+- **Theoretical Guarantees**: Theoretical results (Theorems 1–3) show that the proposed method is consistent and can recover more edge directions than baseline methods under reasonable assumptions.
+
+### Weaknesses
+
+- **Assumption Dependence**: The approach relies on the assumption that changes in causal modules can be fully represented as functions of a domain index and that there are no confounders within each domain (though confounding across modules is partially addressed). Real-world violations of these assumptions may limit practical utility.
+- **Score-based Limitations**: While the MDS is clever, its reliance on kernel-based independence measures and BIC/GS means the method may inherit weaknesses of these estimators, especially in small-sample and highly nonlinear regimes.
+- **No Handling of Changing Causal Structures**: The method does not address cases where the underlying causal graph structure itself changes across domains (only the parameters/noise/distributions shift).
+
+---
+
+## 2. Motivation Clarity
+
+### Strengths
+
+- **Clear Problem Statement**: The paper is well-motivated, with an articulate explanation of why distribution shifts are problematic for existing methods and why naive pooling leads to erroneous discoveries.
+- **Realistic Examples**: Use cases (e.g., fMRI hippocampus signals) and toy examples make clear the types of spurious correlations that can arise under domain shifts.
+
+### Weaknesses
+
+- **Assumptions Not Deeply Discussed**: The limitations of the core assumptions (e.g., no within-domain confounding, independent change mechanism) are not discussed in sufficient detail with respect to real-world datasets.
+- **Positioning Among Recent Work**: While the relation to CD-NOD and other multi-domain methods is described, the distinctions could be more explicit, especially regarding when MDSS would be strictly preferable.
+
+---
+
+## 3. Experimental Completeness
+
+### Strengths
+
+- **Comparative Evaluation**: The method is compared against a comprehensive set of baselines, including both single-domain and multi-domain methods (PC, GES, LiNGAM, NO-TEARS, RL, MC, IB, CD-NOD).
+- **Synthetic and Real Data**: Experiments include both synthetic data (with varying numbers of domains and variables, and both linear/nonlinear SEMs) and a real fMRI dataset.
+- **Metrics**: Standard and appropriate metrics (TPR, TNR, SHD) are reported.
+
+### Weaknesses
+
+- **Depth of Real-World Evaluation**: Only one real-world dataset is used, and the discussion of results on this dataset is somewhat brief. More diverse real data would increase confidence in the method’s robustness.
+- **Ablation Studies**: There are no ablation studies examining the impact of key innovations (e.g., the effect of the MDS penalty, or the two-stage vs. single-stage search).
+- **Scalability and Complexity**: The computational cost of the approach is mentioned as a limitation, but there is no detailed analysis of runtime or memory usage, especially for large graphs or many domains.
+
+---
+
+## 4. Writing Fluency
+
+### Strengths
+
+- **Readable and Organized**: The paper is well-organized, and the writing is generally clear and fluent, with a logical flow from motivation to methodology, theory, experiments, and conclusion.
+- **Notation and Definitions**: Key terms and mathematical definitions are provided and mostly clearly explained.
+- **Figures and Algorithms**: Diagrams and pseudocode (Algorithms 1 & 2) are helpful and well-integrated with the text.
+
+### Weaknesses
+
+- **Typographical/Formatting Issues**: A few minor typos and formatting inconsistencies are present (e.g., inconsistent spacing, occasional minor grammatical errors), but these do not obscure the core content.
+- **Dense Notation**: Some mathematical passages (e.g., the kernel embedding section) may be quite dense for non-experts in causal discovery or RKHS, and could benefit from more intuition or concrete examples.
+
+---
+
+## 5. Strengths and Weaknesses (Summary Table)
+
+| Aspect                          | Strengths                                                                                          | Weaknesses                                                      |
+|----------------------------------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| Methodological Novelty           | New domain-index augmentation; MDS; theoretical consistency; addresses degeneration                | Depends on strong assumptions; limited to fixed structure        |
+| Motivation Clarity               | Well-motivated; clear examples                                                                    | Not enough discussion of real-world assumption violations        |
+| Experimental Completeness        | Broad comparison; linear/nonlinear; synthetic/real data                                            | Only one real dataset; lacking ablation/scalability analysis     |
+| Writing Fluency                  | Clear structure; good figures and algorithms                                                       | Some notation density; minor typos                              |
+
+---
+
+## 6. Suggestions for Improvement
+
+- **Broaden Real Data Evaluation**: Test on more diverse real datasets (e.g., genomics, economics, climate) to demonstrate broader applicability and robustness.
+- **Ablation Studies**: Include ablation experiments to isolate the effects of the MDS penalty and the two-stage search procedure.
+- **Scalability Analysis**: Report detailed runtime and memory usage, and discuss potential optimizations for large-scale problems.
+- **Discussion of Limitations**: Add a more extensive discussion of the method’s assumptions and potential pitfalls when applied to real-world data with latent confounding or structural changes.
+- **Accessibility**: Consider supplementing the more technical sections (e.g., kernel embedding, HSIC) with intuitive explanations or visualizations for broader readership.
+
+---
+
+## 7. Overall Assessment
+
+**This paper makes a meaningful and technically sound contribution to the field of causal discovery under distribution shift, with a novel method that is both theoretically justified and empirically validated.** The MDSS framework is an important step toward more robust structure learning in heterogeneous environments. With additional empirical evidence, ablation studies, and a deeper discussion of limitations, this work would be of strong interest to both the causal inference and broader machine learning communities.
+
+**Recommendation:** Accept with minor revisions.
+
+## A-R3-001 — author_response
+
+Certainly! Below is a sample author rebuttal, written in direct response to the review you provided:
+
+---
+
+We thank the reviewer for their thoughtful and comprehensive evaluation of our paper. We appreciate the recognition of the methodological novelty and the clarity of our motivation and presentation. Below, we address each of the main points raised in the review.
+
+---
+
+### Methodological Novelty
+
+- **Assumption Dependence**:  
+  We agree that our method relies on the assumption that changes in causal modules can be represented as functions of the domain index and that there are no within-domain confounders. These assumptions are commonly adopted in the causal discovery literature (e.g., Peters et al., 2016; Huang et al., 2019) to ensure identifiability and tractability. In real-world applications, we acknowledge that some violations may occur. We will clarify these points and discuss potential extensions to partially relax these assumptions, such as integrating methods for latent confounder detection, in the revised version.
+
+- **Score-based Limitations**:  
+  We thank the reviewer for pointing this out. While our MDS leverages established statistical criteria (BIC/GS and kernel-based dependence), we recognize that small-sample nonlinear regimes remain challenging. We will add a discussion in Section 4 about possible robustness measures and alternative dependence estimators that could be integrated in future work.
+
+- **Changing Causal Structures**:  
+  We acknowledge this limitation and agree that handling changing graph structures across domains is a compelling research direction. We will explicitly mention this as an open problem and potential extension in the conclusion.
+
+---
+
+### Motivation Clarity
+
+- **Assumptions and Real-World Data**:  
+  We appreciate this suggestion. We will expand our discussion of the assumptions, specifically addressing their practical validity and consequences when they are violated, in Section 2 and the newly added discussion section.
+
+- **Positioning Among Recent Work**:  
+  Thank you for highlighting the need for a clearer comparison to recent work, especially CD-NOD. We will revise Section 1 and 3 to more explicitly state where MDSS is preferable (e.g., in scenarios with complex, nonlinear, or high-dimensional shifts).
+
+---
+
+### Experimental Completeness
+
+- **Real-World Data**:  
+  We agree that more real-world datasets would strengthen our claims. Due to space and resource constraints, we focused on the fMRI dataset as it is a standard benchmark with domain shifts and known ground truth. For the camera-ready version (or supplemental material), we will include results from at least one additional real-world dataset (e.g., from genomics or economics), and discuss the practical challenges encountered.
+
+- **Ablation Studies**:  
+  This is an excellent suggestion. We will add an ablation study in the supplemental material to evaluate the effect of the MDS penalty and the two-stage search, and report these results in the revised paper.
+
+- **Scalability and Complexity**:  
+  We appreciate this feedback. We will provide a detailed analysis of runtime and memory usage for different graph sizes and numbers of domains, and discuss opportunities for further optimization.
+
+---
+
+### Writing Fluency
+
+- **Typographical/Formatting Issues**:  
+  Thank you for noting these. We will carefully proofread the paper to fix typographical and formatting inconsistencies.
+
+- **Dense Notation**:  
+  We will revise the technical sections (especially regarding kernel embeddings and HSIC) to include more intuition and, where possible, illustrative examples or diagrams to aid understanding.
+
+---
+
+### Summary and Revisions Planned
+
+We thank the reviewer again for their valuable and constructive comments. In summary, for the revision we will:
+
+- Expand discussion of assumptions, limitations, and practical implications.
+- Provide a clearer comparison to prior work, particularly CD-NOD.
+- Include ablation studies and, if possible, additional real-world datasets.
+- Add detailed scalability analysis.
+- Improve clarity in technical sections and fix minor typographical issues.
+
+We hope these revisions address the reviewer’s concerns and further strengthen our submission.
+
+---
+
+## R3-RE-001 — reviewer_reevaluation
+
+Certainly! Here is a follow-up review, reflecting on the authors’ rebuttal and indicating whether each concern is resolved:
+
+---
+
+## Follow-up Review
+
+I thank the authors for their detailed and thoughtful rebuttal, which addresses each of my concerns directly.
+
+### Methodological Novelty
+
+- **Assumption Dependence**:  
+  The authors acknowledge the limitation and commit to making their assumptions and the implications of their potential violation more explicit in the revised manuscript. The mention of possible extensions for latent confounder detection is a constructive addition. **This satisfactorily resolves my concern.**
+
+- **Score-based Limitations**:  
+  The authors agree to include a discussion about robustness and alternative estimators. While experimental demonstration would be ideal, a strengthened discussion in the main text is a reasonable response for the current submission. **Concern resolved.**
+
+- **Changing Causal Structures**:  
+  The authors will more clearly state this limitation and position it as a direction for future work. **This response is adequate.**
+
+### Motivation Clarity
+
+- **Assumptions and Real-World Data**:  
+  The authors plan to expand their discussion of practical assumption validity and consequences, which will help readers understand the method’s applicability. **Concern resolved.**
+
+- **Positioning Among Recent Work**:  
+  The commitment to more clearly contrast with CD-NOD and related work, particularly regarding the advantages of MDSS, will address my initial concern. **Resolved.**
+
+### Experimental Completeness
+
+- **Real-World Data**:  
+  While more real-world experiments would be ideal, the authors provide a practical rationale and commit to adding additional datasets in the final or supplementary version. This is a reasonable compromise. **Concern resolved.**
+
+- **Ablation Studies**:  
+  The authors will add ablation studies in the supplemental material. This is a positive and sufficient response. **Resolved.**
+
+- **Scalability and Complexity**:  
+  The planned inclusion of runtime and memory usage analysis addresses my concern. **Resolved.**
+
+### Writing Fluency
+
+- **Typographical/Formatting Issues**:  
+  The authors will proofread and correct minor issues. **Resolved.**
+
+- **Dense Notation**:  
+  The authors will improve the presentation of technical material for accessibility. **Resolved.**
+
+---
+
+## Conclusion
+
+The authors have thoroughly addressed all of my concerns and provided specific plans for revision and improvement. I am satisfied with their responses, and my recommendation remains **accept (minor revision)**. I look forward to seeing the revised version.
