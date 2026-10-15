@@ -29,7 +29,10 @@
     "Acceptance classification uses untrained random weights.",
     "Author responses are LLM simulations, not actual author rebuttals.",
     "No figure captions were present in the reused parsed input; 12 tables were included.",
-    "No fixed random seed; LLM outputs and untrained predictions vary across runs."
+    "No fixed random seed; LLM outputs and untrained predictions vary across runs.",
+    "Input PDF is the published version; original official reviews evaluated an earlier submission.",
+    "Paper title was stored separately but not included in debate ingestion messages.",
+    "Appendices were included in main_text because reference/appendix detection did not handle the cached heading structure."
   ],
   "implementation_base_commit": "3ecaceb56a3037894b042182d862b35776c6497e",
   "started_at": "2026-10-15T16:27:50+09:00",

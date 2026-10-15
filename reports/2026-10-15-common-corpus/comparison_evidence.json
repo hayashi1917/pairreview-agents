@@ -1,0 +1,94 @@
+{
+  "compared_at": "2026-10-15",
+  "timezone": "Asia/Tokyo",
+  "forum": "https://openreview.net/forum?id=0wSlFpMsGb",
+  "submission_number": 25369,
+  "retrieval": "Read the publicly rendered OpenReview forum via browser accessibility tree; API and generic web fetch encountered access checks. No login or posts.",
+  "public_reply_count": 15,
+  "reviews": [
+    {
+      "reviewer": "aTGr",
+      "note_id": "bkY1AsL5B0",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=bkY1AsL5B0",
+      "displayed_rating": 8,
+      "displayed_confidence": 5
+    },
+    {
+      "reviewer": "BY7t",
+      "note_id": "C4Fuk8oFGb",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=C4Fuk8oFGb",
+      "displayed_rating": 8,
+      "displayed_confidence": 3
+    },
+    {
+      "reviewer": "LPfF",
+      "note_id": "6RgsXhH2eE",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=6RgsXhH2eE",
+      "displayed_rating": 6,
+      "displayed_confidence": 4
+    },
+    {
+      "reviewer": "GQ3w",
+      "note_id": "C1sxAsc5X2",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=C1sxAsc5X2",
+      "displayed_rating": 6,
+      "displayed_confidence": 4
+    }
+  ],
+  "author_responses": [
+    {
+      "to_reviewer": "aTGr",
+      "note_id": "k0RyL12gDJ",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=k0RyL12gDJ"
+    },
+    {
+      "to_reviewer": "BY7t",
+      "note_id": "ccIUBCapRf",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=ccIUBCapRf"
+    },
+    {
+      "to_reviewer": "LPfF",
+      "note_id": "qORc2swqvJ",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=qORc2swqvJ"
+    },
+    {
+      "to_reviewer": "GQ3w",
+      "note_id": "8twzvih1Mf",
+      "url": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=8twzvih1Mf"
+    }
+  ],
+  "other_evidence": {
+    "reviewer_LPfF_followup": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=GD4GlH54ly",
+    "meta_review": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=cAXlEEmbJ3",
+    "decision": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=uu1fo3AgGm",
+    "general_comment_part_1": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=rwTFjG61ST",
+    "general_comment_part_2": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=CDvxDGz1tT",
+    "revision_comment": "https://openreview.net/forum?id=0wSlFpMsGb&noteId=afA6wPh9US"
+  },
+  "displayed_decision": "Accept (Oral)",
+  "meta_review_score_movement_is_speculation_not_confirmed_change": true,
+  "generated_reviews": {
+    "path": "debate_tree.json",
+    "initial_review_ids": [
+      "R1-I-001",
+      "R2-I-001",
+      "R3-I-001"
+    ],
+    "numeric_ratings_available": false,
+    "one_to_one_alignment_with_official_reviewers": false
+  },
+  "input_checks": {
+    "pdf_sha256": "c0cc20a3e74f4eaa6fb55a31ff7d3d9e8053599d36f4524d7a3ba2dfe79209f3",
+    "pdf_is_published_version": true,
+    "official_initial_reviews_are_from_before_author_rebuttal": true,
+    "exact_title_present_in_ingestion_messages": false,
+    "figure_captions_count": 0,
+    "tables_count": 12,
+    "appendix_heading_in_main_text": true,
+    "references_field_characters": 0,
+    "related_work_section_and_comparison_table_present": true
+  },
+  "comparison_type": "Qualitative single-paper comparison of topics, recommendations, and response handling; not a recall/accuracy benchmark.",
+  "raw_official_review_text_redistributed": false,
+  "method_reference": "https://arxiv.org/abs/2609.00065"
+}
