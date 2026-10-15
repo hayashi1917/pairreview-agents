@@ -1,0 +1,22 @@
+{
+  "title": "APRES: An Agentic Paper Revision and Evaluation System",
+  "forum": "https://openreview.net/forum?id=I2hLjiqNAv",
+  "source_pdf": "User attachment: 5663_APRES_An_Agentic_Paper_Re.pdf",
+  "version": "Revised manuscript created 2025-12-03; not the initial review version",
+  "source_pdf_sha256": "b0aa814ffa46de6faaa867dfceaac4a4f71d43f1a2e5a90e8d6d5d06e4dace57",
+  "text_characters": 142892,
+  "prepared_input_sha256": "13fbfdabaaa0d8e3c42be3c03d7d85065ee625353978ad1c1b340ac0f5cdf711",
+  "page_images": 35,
+  "image_max_dimension": 1200,
+  "scope": "All 35 pages, including title, figures, tables, references and appendix",
+  "models": {
+    "debate": "gpt-4.1",
+    "relation_extraction": "gpt-4.1-mini",
+    "embedding": "text-embedding-3-small"
+  },
+  "trained_weights_present": false,
+  "official_reviews_or_author_replies_given_to_generation": false,
+  "selection": "User explicitly selected APRES and supplied this revised PDF; initial review version unavailable in public revision history",
+  "started_at": "2026-10-16T00:26:18.028867+09:00",
+  "completed_at": "2026-10-16T00:30:41.899867+09:00"
+}

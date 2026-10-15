@@ -1,0 +1,6 @@
+{
+  "label": "reject",
+  "reject_probability": 0.5293884873390198,
+  "accept_probability": 0.4706116020679474,
+  "used_trained_weights": false
+}

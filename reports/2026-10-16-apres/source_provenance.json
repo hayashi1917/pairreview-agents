@@ -1,0 +1,49 @@
+{
+  "title": "APRES: An Agentic Paper Revision and Evaluation System",
+  "forum": "https://openreview.net/forum?id=I2hLjiqNAv",
+  "submission_number": 5663,
+  "input": "User attachment: 5663_APRES_An_Agentic_Paper_Re.pdf",
+  "input_sha256": "b0aa814ffa46de6faaa867dfceaac4a4f71d43f1a2e5a90e8d6d5d06e4dace57",
+  "pdf_pages": 35,
+  "pdf_creation_time_jst": "2025-12-03T23:20:26+09:00",
+  "version_status": "Revised after initial reviews. Appendix C adds 500-paper preservation check; Appendix J adds costs; Figures 1 and 2 separate stages. These changes correspond to author replies.",
+  "revision_history": "https://openreview.net/revisions?id=I2hLjiqNAv",
+  "revision_history_visible_result": "No revisions to display.",
+  "initial_version_matched": false,
+  "official_reviews_given_to_generation": false,
+  "official_reviews": [
+    {
+      "reviewer": "f3Vo",
+      "note_id": "YI5itLHpwd",
+      "posted": "2025-10-31",
+      "rating": 6
+    },
+    {
+      "reviewer": "381o",
+      "note_id": "46ExBWGh1m",
+      "posted": "2025-10-31",
+      "rating": 4
+    },
+    {
+      "reviewer": "7q2X",
+      "note_id": "eAdZOJ9PXr",
+      "posted": "2025-10-26",
+      "rating": 2
+    },
+    {
+      "reviewer": "Dwr5",
+      "note_id": "WBAqKyf7Z7",
+      "posted": "2025-10-19",
+      "rating": 6
+    }
+  ],
+  "author_revision_summary_note": "dAbVphWMgu",
+  "meta_review_note": "77giIBVZum",
+  "decision": {
+    "note_id": "rZPmtJA23L",
+    "decision": "Reject",
+    "date": "2026-01-26"
+  },
+  "retrieval_date_jst": "2026-10-16",
+  "comparison_limit": "Same paper but different manuscript versions; absence of a criticism may reflect manuscript changes. No recall, precision or score agreement performance claim."
+}
