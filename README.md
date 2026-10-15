@@ -5,6 +5,9 @@
 既存環境での起動方法・前回の解析キャッシュの再利用・再開時の確認事項は
 [査読エージェントの再実行](docs/restart.md)を参照。
 
+[2026-10-15のCommon Corpus再実行結果](reports/2026-10-15-common-corpus/README.md)
+（全6工程の動作確認、査読ログ、未学習モデルの制限）。
+
 論文PDF（またはMinerU抽出済みjson）を入力とし、LLMによるマルチエージェント査読討論を生成、
 その討論から異種グラフを構築してHGT（Heterogeneous Graph Transformer）で推論する。
 

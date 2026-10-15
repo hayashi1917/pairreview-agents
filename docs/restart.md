@@ -2,6 +2,9 @@
 
 確認日: 2026-10-15
 
+Common Corpusで全6工程を実行した記録と査読ログは
+[2026-10-15の実行結果](../reports/2026-10-15-common-corpus/README.md)を参照。
+
 ## 場所と役割
 
 - ローカル: `/Users/haya/research/program/pairreview-agents`
@@ -70,7 +73,7 @@ PY
 
 - `debate_tree.json`: 査読者ごとの初期査読・模擬著者反論・再評価。
 - `graph.json`: 討論から構築した異種グラフ。
-- `prediction.json`: 採否判定と `is_trained`。
+- `prediction.json`: 採否判定と `used_trained_weights`。
 - `logs/run_*.log`: 進行状況。
 
 **2026-10-15の再開時点では `models/acceptance_model.pt` は存在しない。**

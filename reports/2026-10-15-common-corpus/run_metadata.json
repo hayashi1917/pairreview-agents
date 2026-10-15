@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-15",
+  "timezone": "Asia/Tokyo",
+  "input_pdf": "data/ICLR2026/25369_Common_Corpus_The_Larges.pdf",
+  "input_pdf_sha256": "c0cc20a3e74f4eaa6fb55a31ff7d3d9e8053599d36f4524d7a3ba2dfe79209f3",
+  "parsed_input_sha256": "4a10e94ddb0fd669dfbe1778effd3a445385649ab9ec6f017654470974d15413",
+  "python": "3.14.2",
+  "dependencies": {
+    "langchain": "1.3.12",
+    "langchain-openai": "1.3.4",
+    "langchain-core": "1.4.9",
+    "openai": "2.44.0",
+    "python-dotenv": "1.2.2",
+    "pydantic": "2.13.4",
+    "requests": "2.34.2",
+    "torch": "2.13.0",
+    "torch-geometric": "2.8.0"
+  },
+  "models": {
+    "debate": "gpt-4.1",
+    "extraction_and_classification": "gpt-4.1-mini",
+    "embedding": "text-embedding-3-small"
+  },
+  "input_preparation": "Converted existing MinerU content_list.json with src.preprocess._content_list_to_paper_content; no new PDF parsing.",
+  "cached_mineru_source": "train_cache/25369_Common_Corpus_The_Larges-8f67f8a2/mineru/content_list.json",
+  "command": ".venv/bin/python -u main.py output/2026-10-15-common-corpus/paper_content.json --output-dir output/2026-10-15-common-corpus",
+  "trained_checkpoint_present_at_start": false,
+  "limitations": [
+    "Acceptance classification uses untrained random weights.",
+    "Author responses are LLM simulations, not actual author rebuttals.",
+    "No figure captions were present in the reused parsed input; 12 tables were included.",
+    "No fixed random seed; LLM outputs and untrained predictions vary across runs."
+  ],
+  "implementation_base_commit": "3ecaceb56a3037894b042182d862b35776c6497e",
+  "started_at": "2026-10-15T16:27:50+09:00",
+  "completed_at": "2026-10-15T16:31:26+09:00",
+  "duration_seconds": 216,
+  "result": "completed_all_six_stages",
+  "debate_turns": 9,
+  "node_counts": {
+    "title": 1,
+    "evaluation_dimension": 4,
+    "reviewer_opinion": 6,
+    "author_opinion": 3
+  },
+  "edge_counts": {
+    "has_aspect": 4,
+    "reviewed_by": 6,
+    "accept": 7,
+    "agree": 7,
+    "complement": 3
+  },
+  "http_successes": 20,
+  "rate_limit_errors": 0,
+  "validation": [
+    "Validated debate, graph and prediction schemas.",
+    "Verified three reviewer-author-reevaluation chains, nine unique turn IDs.",
+    "Verified 14 unique nodes and 27 edges with existing endpoints.",
+    "Verified finite probabilities summing to one and used_trained_weights=false.",
+    "Verified successful completion in execution log."
+  ]
+}

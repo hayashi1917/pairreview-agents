@@ -1,0 +1,69 @@
+2026-10-15 16:27:50 [INFO] src.logging_config: ログファイル: logs/run_20261015_162750.log
+2026-10-15 16:27:50 [INFO] __main__: [1/6] 論文前処理を開始します。
+2026-10-15 16:27:50 [INFO] src.preprocess: 抽出済みjsonを読み込み中: output/2026-10-15-common-corpus/paper_content.json
+2026-10-15 16:27:50 [INFO] src.preprocess: 論文前処理完了: title=COMMON CORPUS: THE LARGEST COLLECTION OFETHICAL DATA FOR LLM PRE-TRAINING
+2026-10-15 16:27:50 [INFO] __main__: [2/6] マルチエージェント討論を開始します。
+2026-10-15 16:27:50 [INFO] src.debate: 論文コンテンツの投入完了。3名のレビュワーによる討論を開始します。
+2026-10-15 16:27:50 [INFO] src.debate: [Reviewer 1] 初期コメントを生成中...
+2026-10-15 16:28:05 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:28:05 [INFO] src.debate: [Reviewer 1] 初期コメント生成完了 (id=R1-I-001)
+2026-10-15 16:28:05 [INFO] src.debate: [Author] Reviewer 1 へのコメントに反論を生成中...
+2026-10-15 16:28:47 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:28:47 [INFO] src.debate: [Author] 反論生成完了 (id=A-R1-001)
+2026-10-15 16:28:47 [INFO] src.debate: [Reviewer 1] 著者の反論を踏まえた再評価を生成中...
+2026-10-15 16:29:39 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:29:39 [INFO] src.debate: [Reviewer 1] 再評価生成完了 (id=R1-RE-001)
+2026-10-15 16:29:39 [INFO] src.debate: [Reviewer 2] 初期コメントを生成中...
+2026-10-15 16:30:01 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:30:01 [INFO] src.debate: [Reviewer 2] 初期コメント生成完了 (id=R2-I-001)
+2026-10-15 16:30:01 [INFO] src.debate: [Author] Reviewer 2 へのコメントに反論を生成中...
+2026-10-15 16:30:25 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:30:25 [INFO] src.debate: [Author] 反論生成完了 (id=A-R2-001)
+2026-10-15 16:30:25 [INFO] src.debate: [Reviewer 2] 著者の反論を踏まえた再評価を生成中...
+2026-10-15 16:30:33 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:30:33 [INFO] src.debate: [Reviewer 2] 再評価生成完了 (id=R2-RE-001)
+2026-10-15 16:30:33 [INFO] src.debate: [Reviewer 3] 初期コメントを生成中...
+2026-10-15 16:30:43 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:30:43 [INFO] src.debate: [Reviewer 3] 初期コメント生成完了 (id=R3-I-001)
+2026-10-15 16:30:43 [INFO] src.debate: [Author] Reviewer 3 へのコメントに反論を生成中...
+2026-10-15 16:30:50 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:30:50 [INFO] src.debate: [Author] 反論生成完了 (id=A-R3-001)
+2026-10-15 16:30:50 [INFO] src.debate: [Reviewer 3] 著者の反論を踏まえた再評価を生成中...
+2026-10-15 16:31:04 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:04 [INFO] src.debate: [Reviewer 3] 再評価生成完了 (id=R3-RE-001)
+2026-10-15 16:31:04 [INFO] src.debate: 討論ログ生成完了: 合計9件の発言
+2026-10-15 16:31:04 [INFO] src.persistence: 議論ツリーを保存しました: output/2026-10-15-common-corpus/debate_tree.json
+2026-10-15 16:31:04 [INFO] __main__: [3/6] 討論からの関係抽出を開始します。
+2026-10-15 16:31:04 [INFO] src.relation_extraction: 討論ログから関係を抽出中... (gpt-4.1-mini)
+2026-10-15 16:31:12 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:12 [INFO] src.relation_extraction: 関係抽出完了: reviewer_author=7件, inter_reviewer=10件（抽出34件から解決）
+2026-10-15 16:31:12 [INFO] __main__: [4/6] 異種グラフ構築を開始します。
+2026-10-15 16:31:12 [INFO] src.graph_builder: 異種グラフの構築を開始します。
+2026-10-15 16:31:12 [INFO] src.graph_builder: 6件のReviewerOpinionをEvaluationDimensionに分類中...
+2026-10-15 16:31:13 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:13 [INFO] src.graph_builder:   (1/6) R1-I-001 -> Experimental Completeness
+2026-10-15 16:31:14 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:14 [INFO] src.graph_builder:   (2/6) R1-RE-001 -> Experimental Completeness
+2026-10-15 16:31:14 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:14 [INFO] src.graph_builder:   (3/6) R2-I-001 -> Methodological Novelty
+2026-10-15 16:31:16 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:16 [INFO] src.graph_builder:   (4/6) R2-RE-001 -> Experimental Completeness
+2026-10-15 16:31:16 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:16 [INFO] src.graph_builder:   (5/6) R3-I-001 -> Motivation Clarity
+2026-10-15 16:31:18 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-15 16:31:18 [INFO] src.graph_builder:   (6/6) R3-RE-001 -> Experimental Completeness
+2026-10-15 16:31:18 [INFO] src.graph_builder: 異種グラフ構築完了: ノード14件, エッジ27件
+2026-10-15 16:31:18 [INFO] src.persistence: 異種グラフを保存しました: output/2026-10-15-common-corpus/graph.json
+2026-10-15 16:31:18 [INFO] __main__: [5/6] HGTによるグラフ推論を開始します。
+2026-10-15 16:31:18 [WARNING] src.hgt_reasoning: 学習済みモデルが見つかりません（models/acceptance_model.pt）。初期化直後の重みで動作するため、採否判定の結果は参考になりません。train_fnn.py で学習してください。
+2026-10-15 16:31:18 [INFO] src.hgt_reasoning: ノードのベクトル化とHeteroDataへの変換中... (text-embedding-3-small)
+2026-10-15 16:31:24 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-10-15 16:31:25 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-10-15 16:31:25 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-10-15 16:31:26 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-10-15 16:31:26 [INFO] src.hgt_reasoning: HGTConvによるグラフ推論を実行中...
+2026-10-15 16:31:26 [INFO] src.hgt_reasoning: HGT推論完了: h_concat次元=512
+2026-10-15 16:31:26 [INFO] __main__: [6/6] FFNによる採否判定を開始します。
+2026-10-15 16:31:26 [INFO] src.hgt_reasoning: 採否判定結果: reject (reject=0.501, accept=0.499) ※未学習の重みによる判定
+2026-10-15 16:31:26 [INFO] src.persistence: 採否判定結果を保存しました: output/2026-10-15-common-corpus/prediction.json
+2026-10-15 16:31:26 [INFO] __main__: 全ステージが完了しました。出力先: output/2026-10-15-common-corpus
