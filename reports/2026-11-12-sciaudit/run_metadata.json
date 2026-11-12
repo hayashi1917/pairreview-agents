@@ -1,0 +1,22 @@
+{
+  "title": "SciAudit: Benchmarking MLLMs for Scientific Error Detection",
+  "forum": "https://openreview.net/forum?id=xagiYitqc0",
+  "source_pdf": "OpenReview /pdf/1ec14e1c42873058eb6366585960da4d37e5f4df.pdf, saved 2026-11-12 (SHA-1 878e5f236b500b2fb2fc989b84c091f9e33fa52c)",
+  "version": "ICLR 2027 submission as reviewed: PDF created 2026-09-25, submission last modified 2026-10-05, reviews released 2026-11-05, saved before any author response",
+  "source_pdf_sha256": "0fc360d7fb45b23c150eda7e1ab181c5b63ac9b5bb837268237f4a1157306a53",
+  "text_characters": 140081,
+  "prepared_input_sha256": "2b69ed983064960fe6e7ed0f30cc4a395438e61ba66d590fc5aa032eaf29b195",
+  "page_images": 46,
+  "image_max_dimension": 1200,
+  "scope": "All 46 pages, including title, figures, tables, references and appendix",
+  "models": {
+    "debate": "gpt-4.1",
+    "relation_extraction": "gpt-4.1-mini",
+    "embedding": "text-embedding-3-small"
+  },
+  "trained_weights_present": false,
+  "official_reviews_or_author_replies_given_to_generation": false,
+  "selection": "User asked for one peer-review-related ICLR 2027 submission whose reviewed PDF is still available; SciAudit chosen for topic fit and specific reviews before seeing any generated output",
+  "started_at": "2026-11-12T22:54:52.538959+09:00",
+  "completed_at": "2026-11-12T22:59:52.123087+09:00"
+}

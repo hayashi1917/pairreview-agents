@@ -1,0 +1,176 @@
+2026-11-12 16:01:44 [INFO] src.logging_config: ログファイル: logs/run_20261112_160144.log
+2026-11-12 16:01:44 [INFO] main: [1/6] 論文前処理を開始します。
+2026-11-12 16:01:44 [INFO] src.preprocess: 抽出済みjsonを読み込み中: /Users/haya/research/program/pairreview-agents/output/2026-11-12-sciaudit/paper_content.json
+2026-11-12 16:01:44 [INFO] src.preprocess: 論文前処理完了: title=SciAudit: Benchmarking MLLMs for Scientific Error Detection
+2026-11-12 16:01:44 [INFO] main: [2/6] マルチエージェント討論を開始します。
+2026-11-12 16:01:44 [INFO] src.debate: 論文コンテンツの投入完了。3名のレビュワーによる討論を開始します。
+2026-11-12 16:01:44 [INFO] src.debate: [Reviewer 1] 初期コメントを生成中...
+2026-11-12 16:02:45 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 16:02:45 [INFO] src.debate: [Reviewer 1] 初期コメント生成完了 (id=R1-I-001)
+2026-11-12 16:02:45 [INFO] src.debate: [Author] Reviewer 1 へのコメントに反論を生成中...
+2026-11-12 16:59:53 [INFO] openai._base_client: Retrying request to /chat/completions in 0.412375 seconds
+2026-11-12 17:29:53 [INFO] openai._base_client: Retrying request to /chat/completions in 0.851812 seconds
+2026-11-12 17:30:25 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 17:30:25 [INFO] src.debate: [Author] 反論生成完了 (id=A-R1-001)
+2026-11-12 17:30:25 [INFO] src.debate: [Reviewer 1] 著者の反論を踏まえた再評価を生成中...
+2026-11-12 18:03:58 [INFO] openai._base_client: Retrying request to /chat/completions in 0.424502 seconds
+2026-11-12 19:05:01 [INFO] openai._base_client: Retrying request to /chat/completions in 0.915493 seconds
+2026-11-12 19:05:43 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 19:05:43 [INFO] src.debate: [Reviewer 1] 再評価生成完了 (id=R1-RE-001)
+2026-11-12 19:05:43 [INFO] src.debate: [Reviewer 2] 初期コメントを生成中...
+2026-11-12 19:32:34 [INFO] openai._base_client: Retrying request to /chat/completions in 0.423202 seconds
+2026-11-12 19:39:49 [INFO] openai._base_client: Retrying request to /chat/completions in 0.925806 seconds
+2026-11-12 19:40:29 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 19:40:29 [INFO] src.debate: [Reviewer 2] 初期コメント生成完了 (id=R2-I-001)
+2026-11-12 19:40:29 [INFO] src.debate: [Author] Reviewer 2 へのコメントに反論を生成中...
+2026-11-12 20:11:18 [INFO] openai._base_client: Retrying request to /chat/completions in 0.438557 seconds
+2026-11-12 20:11:51 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 20:11:51 [INFO] src.debate: [Author] 反論生成完了 (id=A-R2-001)
+2026-11-12 20:11:51 [INFO] src.debate: [Reviewer 2] 著者の反論を踏まえた再評価を生成中...
+2026-11-12 21:07:00 [INFO] openai._base_client: Retrying request to /chat/completions in 0.396668 seconds
+2026-11-12 22:08:02 [INFO] openai._base_client: Retrying request to /chat/completions in 0.756896 seconds
+Traceback (most recent call last):
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError: [Errno 32] Broken pipe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_client.py", line 478, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_client.py", line 456, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_base_client.py", line 964, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError: [Errno 32] Broken pipe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/haya/research/program/pairreview-agents/reports/2026-11-12-sciaudit/run_submission_review.py", line 74, in <module>
+    run(sys.argv[1])
+    ~~~^^^^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/reports/2026-11-12-sciaudit/run_submission_review.py", line 69, in run
+    pipeline.main(str(prepared), str(OUT), str(OUT / 'no_trained_model.pt'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/main.py", line 55, in main
+    debate_log = run_multi_agent_debate(paper)
+  File "/Users/haya/research/program/pairreview-agents/src/debate.py", line 165, in run_multi_agent_debate
+    reeval_comment = _get_llm().invoke(history).content
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 476, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1692, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1687, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1251, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<52 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_base_client.py", line 1332, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haya/research/program/pairreview-agents/.venv/lib/python3.14/site-packages/openai/_base_client.py", line 1072, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+exit=1
